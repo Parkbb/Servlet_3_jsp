@@ -1,3 +1,5 @@
+<%@page import="com.iu.util.DBConnector"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="com.iu.notice.NoticeDAO"%>
 <%@page import="com.iu.notice.NoticeDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,6 +10,15 @@ response.setCharacterEncoding("UTF-8");
 
 NoticeDTO noticeDTO = (NoticeDTO)request.getAttribute("dto");
 
+
+Connection con = DBConnector.getConnection();
+
+NoticeDAO noticeDAO = new NoticeDAO();
+
+int num2 = noticeDAO.selectnext(con, noticeDTO.getNum());
+int num1 = noticeDAO.selectpre(con, noticeDTO.getNum());
+
+con.close();
 
 %>
 <!DOCTYPE html>
@@ -29,6 +40,7 @@ NoticeDTO noticeDTO = (NoticeDTO)request.getAttribute("dto");
 
 </head>
 <body>
+<%@ include file="../layout/nav.jsp" %>
 	<div class="container">
 		<table class="table">
 			<thead>
@@ -56,8 +68,8 @@ NoticeDTO noticeDTO = (NoticeDTO)request.getAttribute("dto");
   		</div>
   		<div>
   			<ul class="pager">
-				<li><a href="noticeSelect.jsp?num=<%= noticeDTO.getNum() -1 %>">Previous</a></li>
-				<li><a href="noticeSelect.jsp?num=<%= noticeDTO.getNum() +1 %>">Next</a></li>
+				<li><a href="noticeSelect.jsp?num=<%= num1 %>" id="pre">Previous</a></li>
+				<li><a href="noticeSelect.jsp?num=<%= num2 %>" id="next">Next</a></li>
 			</ul>
 			<div style="float: left;">
 				<a href="noticeList.jsp" class="btn btn-success">List</a>
@@ -96,7 +108,12 @@ NoticeDTO noticeDTO = (NoticeDTO)request.getAttribute("dto");
 $("#btn").click(function() {
 	location.href="noticeDeleteResult.jsp?num=<%= noticeDTO.getNum() %>"
 });
-
+if(<%= num2 %> == 99999999){
+	$("#next").hide();
+}
+if(<%= num1 %> == 0){
+	$("#pre").hide();
+}
 
 </script>
 

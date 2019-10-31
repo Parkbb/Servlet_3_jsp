@@ -34,7 +34,7 @@
 
 <style type="text/css">
 
-a {
+table a {
  color: black;
  font-size: 18px;
  font-weight: bold;
@@ -49,6 +49,7 @@ a:hover {
 </style>
 </head>
 <body>
+<%@ include file="../layout/nav.jsp" %>
 	<div class="container">
 		<table class="table">
 			<thead>

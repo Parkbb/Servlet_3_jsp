@@ -36,6 +36,7 @@
 
 </head>
 <body>
+<%@ include file="../layout/nav.jsp" %>
 <div class="container">
 <h2>Point Update Page</h2>
 <form action="pointUpdateResult.jsp" method="post">

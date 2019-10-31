@@ -9,9 +9,9 @@ public class NoticeDAO {
 	//nextselect
 	public int selectnext(Connection con, int num) throws Exception{
 		
-		int num2 = 999999999;
-		String sql = "select num from notice "
-				+ "where (select min(num) from notice where num > ?";
+		int num2 = 99999999;
+		String sql = "select * from notice "
+				+ "where num = (select min(num) from notice where num > ?)";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		
@@ -28,8 +28,8 @@ public class NoticeDAO {
 	//preselect
 	public int selectpre(Connection con, int num) throws Exception{
 		int num1 = 0;
-		String sql = "select num from notice "
-				+ "where (select max(num) from notice where num < ?";
+		String sql = "select * from notice "
+				+ "where num = (select max(num) from notice where num < ?)";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		
