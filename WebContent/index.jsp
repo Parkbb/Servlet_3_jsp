@@ -8,7 +8,8 @@
 </head>
 <body>
 	<a href="point/pointList.jsp">Point List</a>
-
+	
+	<a href="member/memberjoinResult.jsp">Member join</a>
 	
 </body>
 </html>
