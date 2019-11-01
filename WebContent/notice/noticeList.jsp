@@ -16,6 +16,21 @@
 	ArrayList<NoticeDTO> ar = noticeDAO.selectList(con);
 	
 	con.close();
+	
+	//쿠키 발행
+	//쿠키 생성시 생성자에 키와 밸류 입력
+	Cookie cookie = new Cookie("name","iu");
+	
+	//쿠키가 적용되는 path 설정 : 보통 context path 적용
+	cookie.setPath(request.getContextPath());
+	
+	//쿠기의 유효기간
+	//초단위
+	//default값 웹브라우저 종료시
+	cookie.setMaxAge(3600);
+	
+	//쿠키를 클라이언트로 전송
+	response.addCookie(cookie);
 %>    
 <!DOCTYPE html>
 <html>

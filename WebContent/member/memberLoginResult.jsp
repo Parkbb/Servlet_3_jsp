@@ -12,6 +12,22 @@
 	MemberDTO memberDTO = new MemberDTO();
 	memberDTO.setId(request.getParameter("id"));
 	memberDTO.setPw(request.getParameter("pw"));
+	////////////////////////////////////////
+	String check = request.getParameter("remember");
+	if (check != null){
+		Cookie cookie = new Cookie("id", request.getParameter("id"));
+		
+		cookie.setPath(request.getContextPath());
+		cookie.setMaxAge(3600);
+		response.addCookie(cookie);
+	} else {
+		Cookie cookie = new Cookie("id", "");
+		
+		cookie.setPath(request.getContextPath());
+		cookie.setMaxAge(3600);
+		response.addCookie(cookie);
+	}
+	
 	
 	MemberDAO memberDAO = new MemberDAO();
 	Connection con = DBConnector.getConnection();
