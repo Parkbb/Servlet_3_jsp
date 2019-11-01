@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +18,15 @@
 </head>
 <body>
 <%@ include file="../layout/nav.jsp" %>
+
+<%
+	if(memberDTO == null || memberDTO.getGrade() != 0){
+		RequestDispatcher view = request.getRequestDispatcher("../common/common_result.jsp");
+		request.setAttribute("msg", "권한이 없습니다.");
+		request.setAttribute("path", "../index.jsp");
+		view.forward(request, response);
+	}
+%>
 <div class="container">
 <h2>Point Insert Page</h2>
 <form  method="post" id="frm" action="noticeWriteResult.jsp">
@@ -26,7 +37,7 @@
     
     <div class="form-group">
     	  <label for="kor">WRITER:</label>
-      	<input type="text" class="form-control" id="writer" placeholder="Enter Your Name" name="writer">
+      	<input type="text" class="form-control" id="writer" readonly="readonly" name="writer" value="<%= memberDTO.getId() %>">
     </div>
     
     <div class="form-group">

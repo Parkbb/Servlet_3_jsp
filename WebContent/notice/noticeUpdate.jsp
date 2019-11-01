@@ -20,7 +20,8 @@
 	con.close();
 	
 	
-%>    
+%>
+  
     
 <!DOCTYPE html>
 <html>
@@ -37,6 +38,14 @@
 </head>
 <body>
 <%@ include file="../layout/nav.jsp" %>
+<%
+	if(memberDTO == null || memberDTO.getGrade() != 0){
+		RequestDispatcher view = request.getRequestDispatcher("../common/common_result.jsp");
+		request.setAttribute("msg", "권한이 없습니다.");
+		request.setAttribute("path", "../index.jsp");
+		view.forward(request, response);
+	}
+%>
 <div class="container">
 <h2>Point Update Page</h2>
 <form action="noticeUpdateResult.jsp" method="get">

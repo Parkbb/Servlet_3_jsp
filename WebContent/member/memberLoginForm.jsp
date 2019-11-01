@@ -15,7 +15,7 @@
 <%@ include file="../layout/nav.jsp" %>
 <div class="container">
   <h2>Vertical (basic) form</h2>
-  <form action="/action_page.php">
+  <form action="memberLoginResult.jsp" method="post">
     <div class="form-group">
       <label for="id">ID:</label>
       <input type="text" class="form-control" id="id" placeholder="Enter email" name="id">

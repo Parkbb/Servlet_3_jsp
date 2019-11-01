@@ -53,7 +53,7 @@ a:hover {
 	<div class="container">
 		<table class="table">
 			<thead>
-				<tr><th class ="col-lg-1" style="text-align: center;">NUM</th><th class ="col-lg-5" style="text-align: center;">TITLE</th><th class ="col-lg-2" style="text-align: center;">WRITER</th><th class ="col-lg-2" style="text-align: center;">DATE</th><th class ="col-lg-2" style="text-align: center;">HIT</th></tr>
+				<tr><th class ="col-lg-1" style="text-align: center;">NUM1</th><th class ="col-lg-5" style="text-align: center;">TITLE</th><th class ="col-lg-2" style="text-align: center;">WRITER</th><th class ="col-lg-2" style="text-align: center;">DATE</th><th class ="col-lg-2" style="text-align: center;">HIT</th></tr>
 				
 			</thead>
 			<tbody>
@@ -74,8 +74,10 @@ a:hover {
 			
 			</tbody>
 		</table>
+				<% if(memberDTO != null) {%>
+				<% if(memberDTO.getGrade() == 0) {%>
 				<a href = "noticeWrite.jsp" class = "btn btn-primary" style="float: right;">INSERT</a>
-				
+				<% }} %>
 				
 	</div>
 </body>

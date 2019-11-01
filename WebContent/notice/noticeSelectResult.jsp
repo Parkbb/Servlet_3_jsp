@@ -75,8 +75,10 @@ con.close();
 				<a href="noticeList.jsp" class="btn btn-success">List</a>
 			</div>
   			<div style="width: 142px; height: 33px; float: right;">
+			<% if(memberDTO != null && noticeDTO.getWriter().equals(memberDTO.getId())) {%>
   				<a href="noticeUpdate.jsp?num=<%= noticeDTO.getNum() %>" class="btn btn-primary">Update</a>
   				<a href="" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete</a>
+  				<% } %>
   			  <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -100,6 +102,7 @@ con.close();
   </div>
   			
   			</div>
+  			
   		</div>
       
 </div>
